@@ -1,0 +1,116 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  name         String
+  email        String   @unique
+  passwordHash String
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Participant {
+  id               String       @id @default(cuid())
+  fullName         String
+  email            String       @unique
+  phone            String
+  age              Int
+  sex              String
+  bond             String
+  classOrSector    String
+  projectGoal      String
+  initialCondition String
+  registeredAt     DateTime     @default(now())
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+  activities       Activity[]
+  attendances      Attendance[]
+  scores           Score[]
+  rankings         Ranking[]
+}
+
+model Activity {
+  id              String      @id @default(cuid())
+  participantId   String
+  type            String
+  distanceKm      Float
+  durationMinutes Int
+  activityDate    DateTime
+  gpsLink         String?
+  proofUploadPath String?
+  observation     String?
+  status          String      @default("PENDING")
+  reviewNote      String?
+  reviewedAt      DateTime?
+  createdAt       DateTime    @default(now())
+  updatedAt       DateTime    @updatedAt
+  participant     Participant @relation(fields: [participantId], references: [id])
+  scores          Score[]
+}
+
+model Event {
+  id          String       @id @default(cuid())
+  title       String
+  description String?
+  type        String
+  startsAt    DateTime
+  endsAt      DateTime?
+  location    String
+  points      Int          @default(0)
+  capacity    Int?
+  qrToken     String?      @unique
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+  attendances Attendance[]
+  scores      Score[]
+}
+
+model Attendance {
+  id            String      @id @default(cuid())
+  eventId       String
+  participantId String
+  confirmedAt   DateTime    @default(now())
+  method        String      @default("QR_CODE")
+  pointsGranted Int         @default(0)
+  event         Event       @relation(fields: [eventId], references: [id])
+  participant   Participant @relation(fields: [participantId], references: [id])
+
+  @@unique([eventId, participantId])
+}
+
+model Score {
+  id            String      @id @default(cuid())
+  participantId String
+  activityId    String?
+  eventId       String?
+  source        String
+  points        Int
+  description   String
+  createdAt     DateTime    @default(now())
+  participant   Participant @relation(fields: [participantId], references: [id])
+  activity      Activity?   @relation(fields: [activityId], references: [id])
+  event         Event?      @relation(fields: [eventId], references: [id])
+}
+
+model Ranking {
+  id            String      @id @default(cuid())
+  participantId String
+  scope         String
+  category      String?
+  period        String      @default("GENERAL")
+  position      Int
+  totalPoints   Int
+  totalDistance Float       @default(0)
+  updatedAt     DateTime    @updatedAt
+  participant   Participant @relation(fields: [participantId], references: [id])
+
+  @@unique([participantId, scope, category, period])
+}
