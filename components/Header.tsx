@@ -2,10 +2,10 @@ import Link from "next/link";
 import { AppIcon } from "@/components/AppIcon";
 
 const navItems = [
-  { href: "/inscricao", label: "Inscricao" },
+  { href: "/inscricao", label: "Inscrição" },
   { href: "/agenda", label: "Agenda" },
   { href: "/atividades", label: "Atividades" },
-  { href: "/pontuacao", label: "Pontuacao" },
+  { href: "/pontuacao", label: "Pontuação" },
   { href: "/rankings", label: "Rankings" },
   { href: "/privacidade", label: "Privacidade" },
   { href: "/login", label: "Login" },

@@ -167,5 +167,5 @@ export async function GET(
     );
   }
 
-  return new Response("Dataset nao encontrado.", { status: 404 });
+  return new Response("Dataset não encontrado.", { status: 404 });
 }

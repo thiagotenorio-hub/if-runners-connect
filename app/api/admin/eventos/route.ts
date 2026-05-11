@@ -53,7 +53,7 @@ export async function POST(request: Request) {
 
   if (!Number.isInteger(points) || points < 0) {
     return NextResponse.json(
-      { message: "Informe uma pontuacao valida." },
+      { message: "Informe uma pontuação válida." },
       { status: 400 }
     );
   }
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
 
   if (Number.isNaN(startsAt.getTime())) {
     return NextResponse.json(
-      { message: "Informe data e horario validos." },
+      { message: "Informe data e horário válidos." },
       { status: 400 }
     );
   }

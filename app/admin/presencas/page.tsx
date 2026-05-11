@@ -23,13 +23,13 @@ export default async function PresencasPage() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-bold uppercase text-forest">
-              Administracao
+              Administração
             </p>
             <h1 className="mt-2 text-3xl font-black text-graphite">
-              Registrar presenca
+              Registrar presença
             </h1>
             <p className="mt-2 text-graphite/70">
-              A presenca usa a pontuacao associada ao evento na agenda.
+              A presença usa a pontuação associada ao evento na agenda.
             </p>
           </div>
           <Link

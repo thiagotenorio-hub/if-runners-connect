@@ -16,17 +16,17 @@ export default function InscricaoPage() {
                 IFPE Campus Garanhuns
               </p>
               <h1 className="mt-2 text-3xl font-black text-graphite">
-                Inscricao no IF RUNNERS
+                Inscrição no IF RUNNERS
               </h1>
               <p className="mt-3 max-w-3xl leading-7 text-graphite/72">
                 O IF RUNNERS - Onde o Movimento Vira Cultura incentiva
-                caminhada, corrida, saude e convivencia por meio de treinos,
+                caminhada, corrida, saúde e convivência por meio de treinos,
                 oficinas, palestras e desafios acompanhados pela equipe do
                 projeto.
               </p>
               <p className="mt-3 max-w-3xl text-sm leading-6 text-graphite/65">
-                Seus dados serao usados apenas para gestao, acompanhamento,
-                pontuacao, presenca e relatorios internos do projeto.
+                Seus dados serão usados apenas para gestão, acompanhamento,
+                pontuação, presença e relatórios internos do projeto.
               </p>
             </div>
           </div>

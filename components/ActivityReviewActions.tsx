@@ -40,7 +40,7 @@ export function ActivityReviewActions({
     setLoadingAction(null);
 
     if (!response.ok) {
-      setMessage(data?.message || "Nao foi possivel revisar a atividade.");
+      setMessage(data?.message || "Não foi possível revisar a atividade.");
       return;
     }
 

@@ -36,13 +36,13 @@ export default async function QrCodesPage() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-bold uppercase text-forest">
-              Administracao
+              Administração
             </p>
             <h1 className="mt-2 text-3xl font-black text-graphite">
               QR Codes
             </h1>
             <p className="mt-2 max-w-3xl text-graphite/70">
-              Baixe o QR Code de inscricao para usar em cartazes, slides, redes
+              Baixe o QR Code de inscrição para usar em cartazes, slides, redes
               sociais e banners do IF RUNNERS.
             </p>
           </div>
@@ -57,7 +57,7 @@ export default async function QrCodesPage() {
         <div className="grid gap-6 rounded border border-graphite/10 bg-white p-6 md:grid-cols-[320px_1fr] md:items-center">
           <div className="rounded border border-graphite/10 bg-[#f6f8f5] p-5">
             <img
-              alt="QR Code para inscricao no IF RUNNERS Connect"
+              alt="QR Code para inscrição no IF RUNNERS Connect"
               className="h-auto w-full rounded bg-white"
               src="/api/admin/qrcodes/inscricao"
             />
@@ -65,11 +65,11 @@ export default async function QrCodesPage() {
 
           <div>
             <h2 className="text-2xl font-black text-graphite">
-              Inscricao de participantes
+              Inscrição de participantes
             </h2>
             <p className="mt-3 text-sm leading-6 text-graphite/70">
-              Este QR Code aponta diretamente para a pagina publica de
-              inscricao do sistema.
+              Este QR Code aponta diretamente para a página pública de
+              inscrição do sistema.
             </p>
 
             <div className="mt-5 rounded border border-graphite/10 bg-[#f6f8f5] p-4">
@@ -98,7 +98,7 @@ export default async function QrCodesPage() {
                 className="rounded border border-graphite/15 px-5 py-3 text-sm font-bold text-graphite transition hover:bg-graphite/5"
                 href="/inscricao"
               >
-                Abrir inscricao
+                Abrir inscrição
               </Link>
             </div>
           </div>
@@ -110,13 +110,13 @@ export default async function QrCodesPage() {
               QR Codes dos eventos
             </h2>
             <p className="mt-2 text-sm text-graphite/70">
-              Cada evento possui um QR Code unico para confirmacao de presenca.
+              Cada evento possui um QR Code único para confirmação de presença.
             </p>
           </div>
 
           {events.length === 0 ? (
             <div className="p-6 text-sm text-graphite/70">
-              Ainda nao ha eventos cadastrados.
+              Ainda não há eventos cadastrados.
             </div>
           ) : (
             <div className="grid gap-4 p-5 md:grid-cols-2">
@@ -134,7 +134,7 @@ export default async function QrCodesPage() {
                       <div className="rounded border border-graphite/10 bg-[#f6f8f5] p-2">
                         {event.qrToken ? (
                           <img
-                            alt={`QR Code de presenca do evento ${event.title}`}
+                            alt={`QR Code de presença do evento ${event.title}`}
                             className="h-auto w-full rounded bg-white"
                             src={`/api/admin/qrcodes/eventos/${event.qrToken}`}
                           />

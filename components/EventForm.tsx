@@ -58,7 +58,7 @@ export function EventForm() {
 
     if (!response.ok) {
       setState("error");
-      setMessage(data?.message || "Nao foi possivel cadastrar o evento.");
+      setMessage(data?.message || "Não foi possível cadastrar o evento.");
       return;
     }
 
@@ -87,7 +87,7 @@ export function EventForm() {
         </div>
       ) : null}
 
-      <FormField label="Titulo" name="title" required />
+      <FormField label="Título" name="title" required />
 
       <div className="grid gap-5 md:grid-cols-2">
         <label className="block">
@@ -108,10 +108,10 @@ export function EventForm() {
           </select>
         </label>
         <FormField label="Data" name="date" type="date" required />
-        <FormField label="Horario" name="time" type="time" required />
+        <FormField label="Horário" name="time" type="time" required />
         <FormField label="Local" name="location" required />
         <FormField
-          label="Pontuacao associada"
+          label="Pontuação associada"
           name="points"
           type="number"
           min="0"
@@ -124,7 +124,7 @@ export function EventForm() {
 
       <label className="block">
         <span className="mb-2 block text-sm font-semibold text-graphite">
-          Descricao
+          Descrição
         </span>
         <textarea
           className="min-h-28 w-full rounded border border-graphite/15 bg-white px-3 py-3 outline-none transition focus:border-forest focus:ring-4 focus:ring-forest/10"

@@ -41,10 +41,10 @@ export default async function ConfirmarPresencaPage({
         {!event ? (
           <div className="rounded border border-graphite/10 bg-white p-8 text-center">
             <h1 className="text-2xl font-black text-graphite">
-              Evento nao encontrado
+              Evento não encontrado
             </h1>
             <p className="mt-3 text-graphite/70">
-              O QR Code escaneado nao corresponde a um evento cadastrado.
+              O QR Code escaneado não corresponde a um evento cadastrado.
             </p>
             <Link
               className="mt-6 inline-flex rounded bg-forest px-5 py-3 font-bold text-white transition hover:bg-forest/90"
@@ -57,7 +57,7 @@ export default async function ConfirmarPresencaPage({
           <div className="grid gap-6">
             <div className="rounded border border-graphite/10 bg-white p-6">
               <p className="text-sm font-bold uppercase text-forest">
-                Confirmacao de presenca
+                Confirmação de presença
               </p>
               <h1 className="mt-2 text-3xl font-black text-graphite">
                 {event.title}
@@ -68,7 +68,7 @@ export default async function ConfirmarPresencaPage({
                   {eventTypeLabel(event.type)}
                 </p>
                 <p>
-                  <strong className="text-graphite">Data e horario:</strong>{" "}
+                  <strong className="text-graphite">Data e horário:</strong>{" "}
                   {formatDateTime(event.startsAt)}
                 </p>
                 <p>
@@ -76,7 +76,7 @@ export default async function ConfirmarPresencaPage({
                   {event.location}
                 </p>
                 <p>
-                  <strong className="text-graphite">Pontuacao:</strong>{" "}
+                  <strong className="text-graphite">Pontuação:</strong>{" "}
                   {event.points} pontos
                 </p>
               </div>

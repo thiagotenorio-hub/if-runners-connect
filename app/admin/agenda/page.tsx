@@ -41,7 +41,7 @@ export default async function AdminAgendaPage() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-bold uppercase text-forest">
-              Administracao
+              Administração
             </p>
             <h1 className="mt-2 text-3xl font-black text-graphite">
               Agenda de eventos
@@ -69,7 +69,7 @@ export default async function AdminAgendaPage() {
             </div>
             {events.length === 0 ? (
               <div className="p-6 text-sm text-graphite/70">
-                Ainda nao ha eventos cadastrados.
+                Ainda não há eventos cadastrados.
               </div>
             ) : (
               <div className="overflow-x-auto">
@@ -78,11 +78,11 @@ export default async function AdminAgendaPage() {
                     <tr>
                       <th className="px-4 py-3">Evento</th>
                       <th className="px-4 py-3">Tipo</th>
-                      <th className="px-4 py-3">Data e horario</th>
+                      <th className="px-4 py-3">Data e horário</th>
                       <th className="px-4 py-3">Local</th>
                       <th className="px-4 py-3">Pontos</th>
                       <th className="px-4 py-3">QR Code</th>
-                      <th className="px-4 py-3">Presencas</th>
+                      <th className="px-4 py-3">Presenças</th>
                     </tr>
                   </thead>
                   <tbody>

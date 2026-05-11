@@ -6,27 +6,27 @@ const features = [
   {
     icon: "run" as const,
     title: "Corridas e caminhadas",
-    text: "Registro de atividades com comprovante, link GPS e validacao."
+    text: "Registro de atividades com comprovante, link GPS e validação."
   },
   {
     icon: "calendar" as const,
     title: "Agenda do projeto",
-    text: "Treinos, oficinas, palestras e corrida oficial em um so lugar."
+    text: "Treinos, oficinas, palestras e corrida oficial em um só lugar."
   },
   {
     icon: "ranking" as const,
     title: "Rankings e pontos",
-    text: "Pontuacao gamificada e classificacoes por desempenho e vinculo."
+    text: "Pontuação gamificada e classificações por desempenho e vínculo."
   },
   {
     icon: "health" as const,
     title: "Movimento e cultura",
-    text: "Acompanhamento institucional para fortalecer a participacao."
+    text: "Acompanhamento institucional para fortalecer a participação."
   }
 ];
 
 const quickStats = [
-  { label: "Inscricoes", value: "Online" },
+  { label: "Inscrições", value: "Online" },
   { label: "Eventos", value: "QR Code" },
   { label: "Ranking", value: "Ao vivo" }
 ];
@@ -53,8 +53,8 @@ export default function Home() {
               IF RUNNERS Connect 2026
             </h1>
             <p className="mt-5 max-w-2xl text-lg font-medium leading-8 text-white/82">
-              Sistema web para organizar inscricoes, atividades, agenda,
-              presencas, pontuacao e rankings do IF RUNNERS - Onde o Movimento
+              Sistema web para organizar inscrições, atividades, agenda,
+              presenças, pontuação e rankings do IF RUNNERS - Onde o Movimento
               Vira Cultura.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
@@ -62,7 +62,7 @@ export default function Home() {
                 href="/inscricao"
                 className="rounded bg-leaf px-5 py-3 font-black text-graphite shadow-sm transition hover:bg-sun"
               >
-                Fazer inscricao
+                Fazer inscrição
               </Link>
               <Link
                 href="/agenda"
@@ -106,7 +106,7 @@ export default function Home() {
                 ))}
               </div>
               <div className="mt-5 grid grid-cols-3 gap-3">
-                {["Corrida", "Caminhada", "Saude"].map((item) => (
+                {["Corrida", "Caminhada", "Saúde"].map((item) => (
                   <div
                     className="bg-leaf px-3 py-3 text-center text-xs font-black text-graphite"
                     key={item}

@@ -26,7 +26,7 @@ export async function POST(request: Request) {
 
   if (!event) {
     return NextResponse.json(
-      { message: "Evento nao encontrado." },
+      { message: "Evento não encontrado." },
       { status: 404 }
     );
   }
@@ -45,7 +45,7 @@ export async function POST(request: Request) {
 
   if (existingAttendance) {
     return NextResponse.json(
-      { message: "Presenca ja registrada para este evento." },
+      { message: "Presença já registrada para este evento." },
       { status: 409 }
     );
   }
@@ -62,7 +62,7 @@ export async function POST(request: Request) {
   await recalculateParticipantScores(body.participantId);
 
   return NextResponse.json({
-    message: "Presenca registrada e pontuacao recalculada.",
+    message: "Presença registrada e pontuação recalculada.",
     points: pointsGranted
   });
 }

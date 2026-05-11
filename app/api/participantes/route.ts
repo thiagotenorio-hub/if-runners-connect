@@ -30,7 +30,7 @@ export async function POST(request: Request) {
 
   if (!body || typeof body !== "object") {
     return NextResponse.json(
-      { message: "Dados da inscricao invalidos." },
+      { message: "Dados da inscrição inválidos." },
       { status: 400 }
     );
   }
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
 
   if (missingField) {
     return NextResponse.json(
-      { message: "Preencha todos os campos obrigatorios." },
+      { message: "Preencha todos os campos obrigatórios." },
       { status: 400 }
     );
   }
@@ -51,7 +51,7 @@ export async function POST(request: Request) {
 
   if (!Number.isInteger(age) || age < 1 || age > 120) {
     return NextResponse.json(
-      { message: "Informe uma idade valida." },
+      { message: "Informe uma idade válida." },
       { status: 400 }
     );
   }
@@ -73,13 +73,13 @@ export async function POST(request: Request) {
         projectGoal: normalizeText((body as { projectGoal: unknown }).projectGoal),
         initialCondition:
           normalizeText((body as { initialCondition: unknown }).initialCondition) ||
-          "Nao informada"
+          "Não informada"
       }
     });
 
     return NextResponse.json(
       {
-        message: "Inscricao realizada com sucesso.",
+        message: "Inscrição realizada com sucesso.",
         participantId: participant.id
       },
       { status: 201 }
@@ -87,13 +87,13 @@ export async function POST(request: Request) {
   } catch (error) {
     if (isUniqueConstraintError(error)) {
       return NextResponse.json(
-        { message: "Ja existe uma inscricao com este e-mail." },
+        { message: "Já existe uma inscrição com este e-mail." },
         { status: 409 }
       );
     }
 
     return NextResponse.json(
-      { message: "Nao foi possivel salvar a inscricao agora." },
+      { message: "Não foi possível salvar a inscrição agora." },
       { status: 500 }
     );
   }

@@ -23,14 +23,14 @@ export function RankingTable({ title, description, rows }: RankingTableProps) {
 
       {rows.length === 0 ? (
         <div className="p-6 text-sm text-graphite/70">
-          Ainda nao ha dados suficientes para este ranking.
+          Ainda não há dados suficientes para este ranking.
         </div>
       ) : (
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] border-collapse text-left text-sm">
             <thead className="bg-graphite text-xs uppercase text-white/85">
               <tr>
-                <th className="px-4 py-3">Posicao</th>
+                <th className="px-4 py-3">Posição</th>
                 <th className="px-4 py-3">Nome</th>
                 <th className="px-4 py-3">Categoria</th>
                 <th className="px-4 py-3">Pontos</th>

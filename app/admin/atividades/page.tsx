@@ -75,10 +75,10 @@ export default async function AdminAtividadesPage() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-bold uppercase text-forest">
-              Administracao
+              Administração
             </p>
             <h1 className="mt-2 text-3xl font-black text-graphite">
-              Atividades fisicas
+              Atividades físicas
             </h1>
             <p className="mt-2 text-graphite/70">
               {activities.length} atividade
@@ -106,7 +106,7 @@ export default async function AdminAtividadesPage() {
         <div className="grid gap-4">
           {activities.length === 0 ? (
             <div className="rounded border border-graphite/10 bg-white p-8 text-center text-graphite/70">
-              Ainda nao ha atividades cadastradas.
+              Ainda não há atividades cadastradas.
             </div>
           ) : (
             activities.map((activity) => {
@@ -148,7 +148,7 @@ export default async function AdminAtividadesPage() {
 
                   <dl className="mt-5 grid gap-3 text-sm md:grid-cols-4">
                     <div>
-                      <dt className="font-bold text-graphite">Distancia</dt>
+                      <dt className="font-bold text-graphite">Distância</dt>
                       <dd className="text-graphite/70">{activity.distanceKm} km</dd>
                     </div>
                     <div>
@@ -173,7 +173,7 @@ export default async function AdminAtividadesPage() {
 
                   <div className="mt-5 grid gap-3 text-sm md:grid-cols-2">
                     <div>
-                      <h3 className="font-bold text-graphite">Comprovacao</h3>
+                      <h3 className="font-bold text-graphite">Comprovação</h3>
                       <div className="mt-2 grid gap-1">
                         {activity.gpsLink ? (
                           <a
@@ -198,11 +198,11 @@ export default async function AdminAtividadesPage() {
                       </div>
                     </div>
                     <div>
-                      <h3 className="font-bold text-graphite">Observacoes</h3>
+                      <h3 className="font-bold text-graphite">Observações</h3>
                       <p className="mt-2 text-graphite/70">
                         {activity.observation ||
                           activity.reviewNote ||
-                          "Sem observacao."}
+                          "Sem observação."}
                       </p>
                     </div>
                   </div>

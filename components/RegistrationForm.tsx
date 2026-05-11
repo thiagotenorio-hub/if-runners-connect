@@ -50,13 +50,13 @@ export function RegistrationForm() {
 
     if (!response.ok) {
       setState("error");
-      setMessage(data?.message || "Nao foi possivel concluir a inscricao.");
+      setMessage(data?.message || "Não foi possível concluir a inscrição.");
       return;
     }
 
     form.reset();
     setState("success");
-    setMessage(data?.message || "Inscricao realizada com sucesso.");
+    setMessage(data?.message || "Inscrição realizada com sucesso.");
   }
 
   return (
@@ -83,7 +83,7 @@ export function RegistrationForm() {
         <FormField label="Telefone" name="phone" required />
         <FormField label="Idade" name="age" type="number" min="1" max="120" required />
         <SelectField
-          label="Vinculo"
+          label="Vínculo"
           name="bond"
           options={[
             "ESTUDANTE",
@@ -115,7 +115,7 @@ export function RegistrationForm() {
 
       <label className="block">
         <span className="mb-2 block text-sm font-semibold text-graphite">
-          Condicao inicial informada
+          Condição inicial informada
         </span>
         <textarea
           className="min-h-28 w-full rounded border border-graphite/15 bg-white px-3 py-3 outline-none transition focus:border-forest focus:ring-4 focus:ring-forest/10"
@@ -126,8 +126,8 @@ export function RegistrationForm() {
       <label className="flex items-start gap-3 rounded bg-forest/5 p-4 text-sm text-graphite/75">
         <input className="mt-1" type="checkbox" required />
         <span>
-          Li e aceito o termo de ciencia e consentimento. Confirmo que desejo
-          participar do projeto e que os dados informados poderao ser usados
+          Li e aceito o termo de ciência e consentimento. Confirmo que desejo
+          participar do projeto e que os dados informados poderão ser usados
           pela equipe para acompanhamento das atividades.{" "}
           <a className="font-bold text-forest" href="/privacidade" target="_blank">
             Ver aviso de privacidade
@@ -140,7 +140,7 @@ export function RegistrationForm() {
         className="w-full rounded bg-forest px-5 py-3 font-black text-white shadow-sm transition hover:bg-forest/90 disabled:cursor-not-allowed disabled:bg-graphite/35 md:w-fit"
         disabled={state === "submitting"}
       >
-        {state === "submitting" ? "Enviando..." : "Enviar inscricao"}
+        {state === "submitting" ? "Enviando..." : "Enviar inscrição"}
       </button>
     </form>
   );

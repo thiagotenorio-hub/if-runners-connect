@@ -1,6 +1,6 @@
 # Retomada do projeto IF RUNNERS Connect
 
-Ultima sessao: 06/05/2026.
+Ultima sessao: 11/05/2026.
 
 ## Onde o projeto esta
 
@@ -28,6 +28,9 @@ http://localhost:3000
 - Projeto preparado para publicacao online com Vercel + Neon/PostgreSQL.
 - Repositorio Git local criado.
 - Primeiro commit criado: `8bebc40`.
+- Interface recebeu polimento visual final, icone de tenis de corrida e revisao de textos em portugues brasileiro.
+- Prisma voltou para PostgreSQL, preparando o projeto para Vercel + Neon.
+- Build de producao validado em 11/05/2026 com `DATABASE_URL` PostgreSQL.
 
 ## Acesso administrativo de teste
 
@@ -48,16 +51,17 @@ docs/PUBLICACAO_ONLINE.md
 
 Ordem recomendada:
 
-1. Criar ou entrar na conta do GitHub.
-2. Criar um repositorio para o projeto.
-3. Enviar este projeto para o GitHub.
-4. Criar ou entrar na conta do Neon.
-5. Criar banco PostgreSQL no Neon.
-6. Criar ou entrar na conta da Vercel.
-7. Importar o repositorio do GitHub na Vercel.
-8. Configurar `DATABASE_URL` e `AUTH_SECRET`.
-9. Fazer o deploy.
-10. Testar inscricao, login, painel administrativo e rankings online.
+1. Salvar as alteracoes atuais em um commit.
+2. Criar ou entrar na conta do GitHub.
+3. Criar um repositorio para o projeto.
+4. Enviar este projeto para o GitHub.
+5. Criar ou entrar na conta do Neon.
+6. Criar banco PostgreSQL no Neon.
+7. Criar ou entrar na conta da Vercel.
+8. Importar o repositorio do GitHub na Vercel.
+9. Configurar `DATABASE_URL` e `AUTH_SECRET`.
+10. Fazer o deploy.
+11. Testar inscricao, login, painel administrativo e rankings online.
 
 ## Observacao importante
 

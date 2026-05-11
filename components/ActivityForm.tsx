@@ -45,7 +45,7 @@ export function ActivityForm({ participants }: ActivityFormProps) {
 
     if (!response.ok) {
       setState("error");
-      setMessage(data?.message || "Nao foi possivel registrar a atividade.");
+      setMessage(data?.message || "Não foi possível registrar a atividade.");
       return;
     }
 
@@ -107,7 +107,7 @@ export function ActivityForm({ participants }: ActivityFormProps) {
           </select>
         </label>
         <FormField
-          label="Distancia em km"
+          label="Distância em km"
           name="distanceKm"
           type="number"
           min="0.1"
@@ -140,7 +140,7 @@ export function ActivityForm({ participants }: ActivityFormProps) {
 
       <label className="block">
         <span className="mb-2 block text-sm font-semibold text-graphite">
-          Observacao
+          Observação
         </span>
         <textarea
           className="min-h-28 w-full rounded border border-graphite/15 bg-white px-3 py-3 outline-none transition focus:border-forest focus:ring-4 focus:ring-forest/10"

@@ -33,7 +33,7 @@ export async function PATCH(
 
   if (!activity) {
     return NextResponse.json(
-      { message: "Atividade nao encontrada." },
+      { message: "Atividade não encontrada." },
       { status: 404 }
     );
   }
@@ -60,8 +60,8 @@ export async function PATCH(
   return NextResponse.json({
     message:
       body.status === "APPROVED"
-        ? "Atividade aprovada e pontuacao recalculada."
-        : "Atividade recusada e pontuacao recalculada.",
+        ? "Atividade aprovada e pontuação recalculada."
+        : "Atividade recusada e pontuação recalculada.",
     points
   });
 }

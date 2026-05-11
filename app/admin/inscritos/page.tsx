@@ -23,7 +23,7 @@ export default async function InscritosPage() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-bold uppercase text-forest">
-              Administracao
+              Administração
             </p>
             <h1 className="mt-2 text-3xl font-black text-graphite">
               Inscritos
@@ -45,7 +45,7 @@ export default async function InscritosPage() {
         <div className="overflow-hidden rounded border border-graphite/10 bg-white">
           {participants.length === 0 ? (
             <div className="p-8 text-center text-graphite/70">
-              Ainda nao ha participantes inscritos.
+              Ainda não há participantes inscritos.
             </div>
           ) : (
             <div className="overflow-x-auto">
@@ -57,10 +57,10 @@ export default async function InscritosPage() {
                     <th className="px-4 py-3">Telefone</th>
                     <th className="px-4 py-3">Idade</th>
                     <th className="px-4 py-3">Sexo</th>
-                    <th className="px-4 py-3">Vinculo</th>
+                    <th className="px-4 py-3">Vínculo</th>
                     <th className="px-4 py-3">Turma/setor</th>
                     <th className="px-4 py-3">Objetivo</th>
-                    <th className="px-4 py-3">Inscricao</th>
+                    <th className="px-4 py-3">Inscrição</th>
                   </tr>
                 </thead>
                 <tbody>

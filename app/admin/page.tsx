@@ -21,18 +21,18 @@ const moduleCards = [
     href: "/admin/agenda"
   },
   {
-    title: "Presencas",
-    description: "Acompanhar confirmacoes em eventos.",
+    title: "Presenças",
+    description: "Acompanhar confirmações em eventos.",
     href: "/admin/presencas"
   },
   {
     title: "Ranking",
-    description: "Consultar pontuacoes e classificacoes.",
+    description: "Consultar pontuações e classificações.",
     href: "/rankings"
   },
   {
     title: "QR Codes",
-    description: "Baixar QR Code da inscricao.",
+    description: "Baixar QR Code da inscrição.",
     href: "/admin/qrcodes"
   }
 ];
@@ -41,8 +41,8 @@ const exportLinks = [
   { label: "Participantes", href: "/api/admin/export/participantes" },
   { label: "Atividades", href: "/api/admin/export/atividades" },
   { label: "Eventos", href: "/api/admin/export/eventos" },
-  { label: "Presencas", href: "/api/admin/export/presencas" },
-  { label: "Pontuacoes", href: "/api/admin/export/pontuacoes" }
+  { label: "Presenças", href: "/api/admin/export/presencas" },
+  { label: "Pontuações", href: "/api/admin/export/pontuacoes" }
 ];
 
 function formatKm(value: number) {
@@ -234,7 +234,7 @@ export default async function AdminPage() {
             value={pendingActivities.length}
           />
           <StatCard
-            label="Presencas registradas"
+            label="Presenças registradas"
             value={events.reduce(
               (total, event) => total + event.attendances.length,
               0
@@ -249,7 +249,7 @@ export default async function AdminPage() {
         <div className="mt-8 grid gap-4 md:grid-cols-2">
           <BarChart
             rows={makeChartRows(registrationsByDay)}
-            title="Evolucao das inscricoes"
+            title="Evolução das inscrições"
           />
           <BarChart
             rows={makeChartRows(kmByWeek)}
@@ -258,11 +258,11 @@ export default async function AdminPage() {
           />
           <BarChart
             rows={makeChartRows(bonds)}
-            title="Participacao por tipo de vinculo"
+            title="Participação por tipo de vínculo"
           />
           <BarChart
             rows={makeChartRows(activityDistribution)}
-            title="Distribuicao corrida x caminhada"
+            title="Distribuição corrida x caminhada"
             valueSuffix=" km"
           />
         </div>
@@ -275,7 +275,7 @@ export default async function AdminPage() {
             <div className="mt-4 grid gap-3">
               {topParticipants.length === 0 ? (
                 <p className="text-sm text-graphite/65">
-                  Ainda nao ha pontuacao registrada.
+                  Ainda não há pontuação registrada.
                 </p>
               ) : (
                 topParticipants.map((participant, index) => (
@@ -305,7 +305,7 @@ export default async function AdminPage() {
               Exportar dados em CSV
             </h2>
             <p className="mt-2 text-sm text-graphite/65">
-              Baixe planilhas para acompanhamento, relatorios e prestacao de
+              Baixe planilhas para acompanhamento, relatórios e prestação de
               contas.
             </p>
             <div className="mt-5 flex flex-wrap gap-2">
@@ -324,7 +324,7 @@ export default async function AdminPage() {
 
         <section className="mt-8">
           <h2 className="mb-4 text-xl font-black text-graphite">
-            Modulos administrativos
+            Módulos administrativos
           </h2>
           <div className="grid gap-4 md:grid-cols-3">
             {moduleCards.map((card) => (

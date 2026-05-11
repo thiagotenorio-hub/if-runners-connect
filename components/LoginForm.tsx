@@ -34,7 +34,7 @@ export function LoginForm() {
     setIsSubmitting(false);
 
     if (!response.ok) {
-      setMessage(data?.message || "Nao foi possivel entrar.");
+      setMessage(data?.message || "Não foi possível entrar.");
       return;
     }
 

@@ -39,7 +39,7 @@ export async function POST(request: Request) {
 
   if (!formData) {
     return NextResponse.json(
-      { message: "Dados da atividade invalidos." },
+      { message: "Dados da atividade inválidos." },
       { status: 400 }
     );
   }
@@ -55,28 +55,28 @@ export async function POST(request: Request) {
 
   if (!participantId || !type || !activityDate) {
     return NextResponse.json(
-      { message: "Preencha todos os campos obrigatorios." },
+      { message: "Preencha todos os campos obrigatórios." },
       { status: 400 }
     );
   }
 
   if (!["RUN", "WALK"].includes(type)) {
     return NextResponse.json(
-      { message: "Tipo de atividade invalido." },
+      { message: "Tipo de atividade inválido." },
       { status: 400 }
     );
   }
 
   if (!Number.isFinite(distanceKm) || distanceKm <= 0) {
     return NextResponse.json(
-      { message: "Informe uma distancia valida." },
+      { message: "Informe uma distância válida." },
       { status: 400 }
     );
   }
 
   if (!Number.isInteger(durationMinutes) || durationMinutes <= 0) {
     return NextResponse.json(
-      { message: "Informe um tempo valido em minutos." },
+      { message: "Informe um tempo válido em minutos." },
       { status: 400 }
     );
   }
@@ -87,7 +87,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         message:
-          "Na versao online, envie um link GPS em vez de arquivo de comprovante."
+          "Na versão online, envie um link GPS em vez de arquivo de comprovante."
       },
       { status: 400 }
     );
@@ -107,7 +107,7 @@ export async function POST(request: Request) {
 
   if (!participant) {
     return NextResponse.json(
-      { message: "Participante nao encontrado." },
+      { message: "Participante não encontrado." },
       { status: 404 }
     );
   }

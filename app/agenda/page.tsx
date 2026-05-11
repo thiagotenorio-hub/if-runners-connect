@@ -51,7 +51,7 @@ export default async function AgendaPage() {
             </span>
             <div>
               <p className="text-sm font-bold uppercase text-forest">
-                Proximos encontros
+                Próximos encontros
               </p>
               <h1 className="mt-2 text-3xl font-black text-graphite">
                 Agenda IF RUNNERS
@@ -66,7 +66,7 @@ export default async function AgendaPage() {
 
         {events.length === 0 ? (
           <div className="rounded border border-graphite/10 bg-white p-8 text-center text-graphite/70">
-            Ainda nao ha proximos eventos cadastrados.
+            Ainda não há próximos eventos cadastrados.
           </div>
         ) : (
           <div className="grid gap-4">

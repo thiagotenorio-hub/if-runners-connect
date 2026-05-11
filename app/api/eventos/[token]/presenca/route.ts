@@ -21,7 +21,7 @@ export async function POST(
 
   if (!email) {
     return NextResponse.json(
-      { message: "Informe o e-mail cadastrado na inscricao." },
+      { message: "Informe o e-mail cadastrado na inscrição." },
       { status: 400 }
     );
   }
@@ -38,7 +38,7 @@ export async function POST(
 
   if (!event) {
     return NextResponse.json(
-      { message: "Evento nao encontrado." },
+      { message: "Evento não encontrado." },
       { status: 404 }
     );
   }
@@ -53,7 +53,7 @@ export async function POST(
 
   if (!participant) {
     return NextResponse.json(
-      { message: "E-mail nao encontrado. Faca sua inscricao primeiro." },
+      { message: "E-mail não encontrado. Faça sua inscrição primeiro." },
       { status: 404 }
     );
   }
@@ -70,7 +70,7 @@ export async function POST(
 
   if (existingAttendance) {
     return NextResponse.json(
-      { message: "Sua presenca ja foi registrada neste evento." },
+      { message: "Sua presença já foi registrada neste evento." },
       { status: 409 }
     );
   }
@@ -89,7 +89,7 @@ export async function POST(
   await recalculateParticipantScores(participant.id);
 
   return NextResponse.json({
-    message: `Presenca confirmada para ${participant.fullName}.`,
+    message: `Presença confirmada para ${participant.fullName}.`,
     points: pointsGranted
   });
 }

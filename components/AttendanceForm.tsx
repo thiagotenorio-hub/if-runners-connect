@@ -99,7 +99,7 @@ export function AttendanceForm({ participants, events }: AttendanceFormProps) {
         disabled={isSubmitting}
         type="submit"
       >
-        {isSubmitting ? "Registrando..." : "Registrar presenca"}
+        {isSubmitting ? "Registrando..." : "Registrar presença"}
       </button>
     </form>
   );

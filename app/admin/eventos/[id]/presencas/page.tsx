@@ -48,7 +48,7 @@ export default async function EventAttendanceListPage({
         {!event ? (
           <div className="rounded border border-graphite/10 bg-white p-8 text-center">
             <h1 className="text-2xl font-black text-graphite">
-              Evento nao encontrado
+              Evento não encontrado
             </h1>
             <Link
               className="mt-6 inline-flex rounded bg-forest px-5 py-3 font-bold text-white transition hover:bg-forest/90"
@@ -62,7 +62,7 @@ export default async function EventAttendanceListPage({
             <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
               <div>
                 <p className="text-sm font-bold uppercase text-forest">
-                  Lista de presenca
+                  Lista de presença
                 </p>
                 <h1 className="mt-2 text-3xl font-black text-graphite">
                   {event.title}
@@ -90,7 +90,7 @@ export default async function EventAttendanceListPage({
               </div>
               <div className="rounded border border-graphite/10 bg-white p-4">
                 <p className="text-xs font-bold uppercase text-graphite/60">
-                  Pontos por presenca
+                  Pontos por presença
                 </p>
                 <p className="mt-2 text-2xl font-black text-graphite">
                   {event.points}
@@ -109,7 +109,7 @@ export default async function EventAttendanceListPage({
             <div className="overflow-hidden rounded border border-graphite/10 bg-white">
               {event.attendances.length === 0 ? (
                 <div className="p-8 text-center text-graphite/70">
-                  Ainda nao ha presencas registradas para este evento.
+                  Ainda não há presenças registradas para este evento.
                 </div>
               ) : (
                 <div className="overflow-x-auto">
@@ -118,10 +118,10 @@ export default async function EventAttendanceListPage({
                       <tr>
                         <th className="px-4 py-3">Participante</th>
                         <th className="px-4 py-3">E-mail</th>
-                        <th className="px-4 py-3">Vinculo</th>
+                        <th className="px-4 py-3">Vínculo</th>
                         <th className="px-4 py-3">Turma/setor</th>
-                        <th className="px-4 py-3">Confirmacao</th>
-                        <th className="px-4 py-3">Metodo</th>
+                        <th className="px-4 py-3">Confirmação</th>
+                        <th className="px-4 py-3">Método</th>
                         <th className="px-4 py-3">Pontos</th>
                       </tr>
                     </thead>

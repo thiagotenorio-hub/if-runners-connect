@@ -117,7 +117,7 @@ function groupRankingRows(
   const groups = new Map<string, ParticipantWithData[]>();
 
   participants.forEach((participant) => {
-    const key = participant[groupKey] || "Nao informado";
+    const key = participant[groupKey] || "Não informado";
     groups.set(key, [...(groups.get(key) || []), participant]);
   });
 
@@ -132,7 +132,7 @@ function groupRankingRows(
       return {
         id: category,
         name: groupKey === "bond" ? labelBond(category) : category,
-        category: groupKey === "bond" ? "Vinculo" : "Turma/setor",
+        category: groupKey === "bond" ? "Vínculo" : "Turma/setor",
         totalPoints,
         totalKm,
         membersCount: members.length
@@ -185,13 +185,13 @@ export default async function RankingsPage() {
       <section className="border-b border-white/10 bg-sprint text-white">
         <div className="mx-auto max-w-6xl px-5 py-10">
           <p className="text-sm font-bold uppercase text-sun">
-            Classificacoes
+            Classificações
           </p>
           <h1 className="mt-2 text-3xl font-black text-white">
             Rankings IF RUNNERS
           </h1>
           <p className="mt-2 max-w-3xl text-white/75">
-            Tabelas calculadas com atividades aprovadas, presencas e pontuacao
+            Tabelas calculadas com atividades aprovadas, presenças e pontuação
             atual dos participantes.
           </p>
         </div>
@@ -201,27 +201,27 @@ export default async function RankingsPage() {
 
         <div className="grid gap-6">
           <RankingTable
-            description="Classificacao individual pela pontuacao total acumulada."
+            description="Classificação individual pela pontuação total acumulada."
             rows={generalRows}
-            title="Ranking geral por pontuacao"
+            title="Ranking geral por pontuação"
           />
           <RankingTable
-            description="Classificacao individual por quilometragem de corrida aprovada."
+            description="Classificação individual por quilometragem de corrida aprovada."
             rows={runRows}
             title="Ranking por maior quilometragem corrida"
           />
           <RankingTable
-            description="Classificacao individual por quilometragem de caminhada aprovada."
+            description="Classificação individual por quilometragem de caminhada aprovada."
             rows={walkRows}
             title="Ranking por maior quilometragem caminhada"
           />
           <RankingTable
-            description="Classificacao agrupada por estudante, servidor, terceirizado e comunidade externa."
+            description="Classificação agrupada por estudante, servidor, terceirizado e comunidade externa."
             rows={bondRows}
-            title="Ranking por vinculo"
+            title="Ranking por vínculo"
           />
           <RankingTable
-            description="Classificacao agrupada por turma ou setor informado na inscricao."
+            description="Classificação agrupada por turma ou setor informado na inscrição."
             rows={classOrSectorRows}
             title="Ranking por turma/setor"
           />

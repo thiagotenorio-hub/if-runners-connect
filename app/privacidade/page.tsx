@@ -9,37 +9,37 @@ export default function PrivacidadePage() {
             Privacidade e LGPD
           </p>
           <h1 className="mt-2 text-3xl font-black text-graphite">
-            Termo simples de ciencia e consentimento
+            Termo simples de ciência e consentimento
           </h1>
           <div className="mt-6 grid gap-5 leading-7 text-graphite/75">
             <p>
-              Ao se inscrever no IF RUNNERS Connect, voce declara estar ciente
-              de que seus dados serao usados pela equipe do projeto IF RUNNERS -
+              Ao se inscrever no IF RUNNERS Connect, você declara estar ciente
+              de que seus dados serão usados pela equipe do projeto IF RUNNERS -
               Onde o Movimento Vira Cultura, do IFPE Campus Garanhuns, para
-              organizar inscricoes, atividades, eventos, presencas, pontuacao,
-              rankings e relatorios internos do projeto.
+              organizar inscrições, atividades, eventos, presenças, pontuação,
+              rankings e relatórios internos do projeto.
             </p>
             <p>
               Os dados coletados incluem nome, e-mail, telefone, idade, sexo,
-              vinculo institucional, turma ou setor, objetivo no projeto,
-              condicao inicial informada, registros de atividades, comprovantes
-              enviados, presencas e pontuacoes.
+              vínculo institucional, turma ou setor, objetivo no projeto,
+              condição inicial informada, registros de atividades, comprovantes
+              enviados, presenças e pontuações.
             </p>
             <p>
-              Dados relacionados a condicao fisica, objetivo de saude,
+              Dados relacionados à condição física, objetivo de saúde,
               atividades e desempenho devem ser tratados com cuidado adicional e
-              nao devem ser publicados de forma individual sem necessidade ou
-              nova autorizacao.
+              não devem ser publicados de forma individual sem necessidade ou
+              nova autorização.
             </p>
             <p>
               O acesso administrativo deve ser restrito a pessoas autorizadas.
-              Exportacoes devem ser usadas apenas para fins de acompanhamento,
-              prestacao de contas e gestao do projeto, evitando compartilhamento
-              publico de dados pessoais.
+              Exportações devem ser usadas apenas para fins de acompanhamento,
+              prestação de contas e gestão do projeto, evitando compartilhamento
+              público de dados pessoais.
             </p>
             <p>
-              O participante pode solicitar correcao, informacoes sobre uso dos
-              dados ou exclusao quando aplicavel, por meio da coordenacao do
+              O participante pode solicitar correção, informações sobre uso dos
+              dados ou exclusão quando aplicável, por meio da coordenação do
               projeto.
             </p>
           </div>

@@ -4,6 +4,17 @@ import { prisma } from "@/lib/prisma";
 
 export const dynamic = "force-dynamic";
 
+function labelBond(value: string) {
+  const labels: Record<string, string> = {
+    ESTUDANTE: "Estudante",
+    SERVIDOR: "Servidor",
+    TERCEIRIZADO: "Terceirizado",
+    COMUNIDADE_EXTERNA: "Comunidade externa"
+  };
+
+  return labels[value] || value;
+}
+
 function sumScoresBySource(
   scores: Array<{
     source: string;
@@ -61,14 +72,14 @@ export default async function PontuacaoPage() {
         <div className="mb-8 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
           <div>
             <p className="text-sm font-bold uppercase text-forest">
-              Gamificacao
+              Gamificação
             </p>
             <h1 className="mt-2 text-3xl font-black text-graphite">
-              Pontuacao geral
+              Pontuação geral
             </h1>
             <p className="mt-2 max-w-3xl text-graphite/70">
               Total de pontos por participante considerando atividades
-              aprovadas e presencas em eventos.
+              aprovadas e presenças em eventos.
             </p>
           </div>
           <Link
@@ -82,16 +93,16 @@ export default async function PontuacaoPage() {
         <div className="overflow-hidden rounded border border-graphite/10 bg-white">
           {rows.length === 0 ? (
             <div className="p-8 text-center text-graphite/70">
-              Ainda nao ha participantes cadastrados.
+              Ainda não há participantes cadastrados.
             </div>
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full min-w-[850px] border-collapse text-left text-sm">
                 <thead className="bg-forest/10 text-xs uppercase text-graphite/65">
                   <tr>
-                    <th className="px-4 py-3">Posicao</th>
+                    <th className="px-4 py-3">Posição</th>
                     <th className="px-4 py-3">Participante</th>
-                    <th className="px-4 py-3">Vinculo</th>
+                    <th className="px-4 py-3">Vínculo</th>
                     <th className="px-4 py-3">Atividades</th>
                     <th className="px-4 py-3">Eventos</th>
                     <th className="px-4 py-3">Total</th>
@@ -106,7 +117,9 @@ export default async function PontuacaoPage() {
                       <td className="px-4 py-4 font-semibold text-graphite">
                         {row.fullName}
                       </td>
-                      <td className="px-4 py-4 text-graphite/70">{row.bond}</td>
+                      <td className="px-4 py-4 text-graphite/70">
+                        {labelBond(row.bond)}
+                      </td>
                       <td className="px-4 py-4 text-graphite/70">
                         {row.activityPoints}
                       </td>

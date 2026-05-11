@@ -29,11 +29,11 @@ export default async function AtividadesPage() {
                 Corridas e caminhadas
               </p>
               <h1 className="mt-2 text-3xl font-black text-graphite">
-                Registrar atividade fisica
+                Registrar atividade física
               </h1>
               <p className="mt-3 max-w-3xl leading-7 text-graphite/72">
-                Envie sua corrida ou caminhada com distancia, tempo, data e
-                comprovante. A atividade ficara pendente ate a avaliacao da
+                Envie sua corrida ou caminhada com distância, tempo, data e
+                comprovante. A atividade ficará pendente até a avaliação da
                 equipe.
               </p>
             </div>
@@ -43,14 +43,14 @@ export default async function AtividadesPage() {
         {participants.length === 0 ? (
           <div className="rounded border border-forest/10 bg-white p-6 shadow-sm">
             <p className="text-graphite/70">
-              Ainda nao ha participantes cadastrados. Faca uma inscricao antes
+              Ainda não há participantes cadastrados. Faça uma inscrição antes
               de registrar atividades.
             </p>
             <Link
               href="/inscricao"
               className="mt-5 inline-flex rounded bg-forest px-5 py-3 font-bold text-white transition hover:bg-forest/90"
             >
-              Ir para inscricao
+              Ir para inscrição
             </Link>
           </div>
         ) : (

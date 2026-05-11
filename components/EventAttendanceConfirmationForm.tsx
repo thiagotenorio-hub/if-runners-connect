@@ -47,13 +47,13 @@ export function EventAttendanceConfirmationForm({
 
     if (!response.ok) {
       setState("error");
-      setMessage(data?.message || "Nao foi possivel confirmar a presenca.");
+      setMessage(data?.message || "Não foi possível confirmar a presença.");
       return;
     }
 
     form.reset();
     setState("success");
-    setMessage(data?.message || "Presenca confirmada.");
+    setMessage(data?.message || "Presença confirmada.");
     setPoints(typeof data?.points === "number" ? data.points : null);
   }
 
@@ -73,19 +73,19 @@ export function EventAttendanceConfirmationForm({
         >
           {message}
           {points !== null ? (
-            <span className="mt-1 block">Pontuacao adicionada: {points}</span>
+            <span className="mt-1 block">Pontuação adicionada: {points}</span>
           ) : null}
         </div>
       ) : null}
 
-      <FormField label="E-mail usado na inscricao" name="email" type="email" required />
+      <FormField label="E-mail usado na inscrição" name="email" type="email" required />
 
       <button
         className="w-full rounded bg-forest px-5 py-3 font-bold text-white transition hover:bg-forest/90 disabled:cursor-not-allowed disabled:bg-graphite/35 md:w-fit"
         disabled={state === "submitting"}
         type="submit"
       >
-        {state === "submitting" ? "Confirmando..." : "Confirmar presenca"}
+        {state === "submitting" ? "Confirmando..." : "Confirmar presença"}
       </button>
     </form>
   );

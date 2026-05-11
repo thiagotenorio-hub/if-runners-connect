@@ -12,7 +12,7 @@ export default function LoginPage() {
             Login administrativo
           </h1>
           <p className="mt-2 text-graphite/70">
-            Acesso restrito a equipe autorizada do IF RUNNERS Connect.
+            Acesso restrito à equipe autorizada do IF RUNNERS Connect.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export default function LoginPage() {
           href="/inscricao"
           className="mt-5 inline-flex text-sm font-semibold text-forest"
         >
-          Acessar inscricao publica
+          Acessar inscrição pública
         </Link>
       </section>
     </PageShell>
