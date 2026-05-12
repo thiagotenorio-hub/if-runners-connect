@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from "react";
 import { FormField } from "@/components/FormField";
-import { SelectField } from "@/components/SelectField";
 
 type FormState = "idle" | "submitting" | "success" | "error";
 
@@ -11,6 +10,17 @@ const initialMessage = "";
 export function RegistrationForm() {
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState(initialMessage);
+  const [bond, setBond] = useState("");
+  const [sex, setSex] = useState("");
+
+  const classOrSectorLabel =
+    bond === "ESTUDANTE"
+      ? "Turma"
+      : bond === "SERVIDOR" || bond === "TERCEIRIZADO"
+        ? "Setor"
+        : bond === "COMUNIDADE_EXTERNA"
+          ? "Comunidade ou grupo"
+          : "Turma ou setor";
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -23,12 +33,14 @@ export function RegistrationForm() {
     }
 
     const formData = new FormData(form);
+    const selectedSex = String(formData.get("sex") || "");
+    const sexOther = String(formData.get("sexOther") || "").trim();
     const payload = {
       fullName: String(formData.get("fullName") || ""),
       email: String(formData.get("email") || ""),
       phone: String(formData.get("phone") || ""),
       age: String(formData.get("age") || ""),
-      sex: String(formData.get("sex") || ""),
+      sex: selectedSex === "OUTRO" ? sexOther : selectedSex,
       bond: String(formData.get("bond") || ""),
       classOrSector: String(formData.get("classOrSector") || ""),
       projectGoal: String(formData.get("projectGoal") || ""),
@@ -55,6 +67,8 @@ export function RegistrationForm() {
     }
 
     form.reset();
+    setBond("");
+    setSex("");
     setState("success");
     setMessage(data?.message || "Inscrição realizada com sucesso.");
   }
@@ -81,25 +95,59 @@ export function RegistrationForm() {
         <FormField label="Nome completo" name="fullName" required />
         <FormField label="E-mail" name="email" type="email" required />
         <FormField label="Telefone" name="phone" required />
-        <FormField label="Idade" name="age" type="number" min="1" max="120" required />
-        <SelectField
-          label="Vínculo"
-          name="bond"
-          options={[
-            "ESTUDANTE",
-            "SERVIDOR",
-            "TERCEIRIZADO",
-            "COMUNIDADE_EXTERNA"
-          ]}
+        <FormField
+          label="Idade"
+          name="age"
+          type="number"
+          min="1"
+          max="120"
           required
         />
-        <SelectField
-          label="Sexo"
-          name="sex"
-          options={["FEMININO", "MASCULINO", "OUTRO", "PREFIRO_NAO_INFORMAR"]}
-          required
-        />
-        <FormField label="Turma ou setor" name="classOrSector" required />
+
+        <label className="block">
+          <span className="mb-2 block text-sm font-semibold text-graphite">
+            Vínculo
+          </span>
+          <select
+            className="w-full rounded border border-graphite/15 bg-white px-3 py-3 outline-none transition focus:border-forest focus:ring-4 focus:ring-forest/10"
+            name="bond"
+            required
+            value={bond}
+            onChange={(event) => setBond(event.target.value)}
+          >
+            <option value="">Selecione</option>
+            <option value="ESTUDANTE">Estudante</option>
+            <option value="SERVIDOR">Servidor</option>
+            <option value="TERCEIRIZADO">Terceirizado</option>
+            <option value="COMUNIDADE_EXTERNA">Comunidade externa</option>
+          </select>
+        </label>
+
+        <label className="block">
+          <span className="mb-2 block text-sm font-semibold text-graphite">
+            Sexo
+          </span>
+          <select
+            className="w-full rounded border border-graphite/15 bg-white px-3 py-3 outline-none transition focus:border-forest focus:ring-4 focus:ring-forest/10"
+            name="sex"
+            required
+            value={sex}
+            onChange={(event) => setSex(event.target.value)}
+          >
+            <option value="">Selecione</option>
+            <option value="FEMININO">Feminino</option>
+            <option value="MASCULINO">Masculino</option>
+            <option value="OUTRO">Outro</option>
+          </select>
+        </label>
+
+        {sex === "OUTRO" ? (
+          <FormField label="Informe o sexo" name="sexOther" required />
+        ) : null}
+
+        {bond ? (
+          <FormField label={classOrSectorLabel} name="classOrSector" required />
+        ) : null}
       </div>
 
       <label className="block">
