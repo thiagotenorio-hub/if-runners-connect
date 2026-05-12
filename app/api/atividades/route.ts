@@ -1,5 +1,6 @@
 import { mkdir, writeFile } from "fs/promises";
 import path from "path";
+import { put } from "@vercel/blob";
 import { NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
@@ -23,11 +24,22 @@ async function saveProofFile(file: File) {
     return null;
   }
 
+  const fileName = `${Date.now()}-${safeFileName(file.name)}`;
+
+  if (process.env.BLOB_READ_WRITE_TOKEN) {
+    const blob = await put(`atividades/${fileName}`, file, {
+      access: "public",
+      addRandomSuffix: true,
+      contentType: file.type || undefined
+    });
+
+    return blob.url;
+  }
+
   const bytes = Buffer.from(await file.arrayBuffer());
   const uploadsDir = path.join(process.cwd(), "public", "uploads", "atividades");
   await mkdir(uploadsDir, { recursive: true });
 
-  const fileName = `${Date.now()}-${safeFileName(file.name)}`;
   const filePath = path.join(uploadsDir, fileName);
   await writeFile(filePath, bytes);
 
@@ -83,11 +95,11 @@ export async function POST(request: Request) {
 
   const hasProofFile = proof instanceof File && proof.size > 0;
 
-  if (process.env.VERCEL && hasProofFile) {
+  if (process.env.VERCEL && hasProofFile && !process.env.BLOB_READ_WRITE_TOKEN) {
     return NextResponse.json(
       {
         message:
-          "Na versão online, envie um link GPS em vez de arquivo de comprovante."
+          "O envio de print ainda precisa do Vercel Blob configurado. Use link GPS por enquanto."
       },
       { status: 400 }
     );
@@ -95,7 +107,7 @@ export async function POST(request: Request) {
 
   if (!gpsLink && !hasProofFile) {
     return NextResponse.json(
-      { message: "Informe um link GPS ou envie um comprovante." },
+      { message: "Informe um link GPS ou envie um print/comprovante." },
       { status: 400 }
     );
   }

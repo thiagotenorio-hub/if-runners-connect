@@ -123,12 +123,12 @@ export function ActivityForm({ participants }: ActivityFormProps) {
           required
         />
         <FormField label="Data" name="activityDate" type="date" required />
-        <FormField label="Link do GPS" name="gpsLink" type="url" />
+        <FormField label="Link do GPS, se tiver" name="gpsLink" type="url" />
       </div>
 
       <label className="block">
         <span className="mb-2 block text-sm font-semibold text-graphite">
-          Print/comprovante
+          Print/comprovante do aplicativo
         </span>
         <input
           accept="image/png,image/jpeg,image/webp,application/pdf"

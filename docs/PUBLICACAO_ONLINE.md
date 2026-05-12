@@ -26,6 +26,7 @@ Na Vercel, configure estas variaveis:
 ```text
 DATABASE_URL=postgresql://usuario:senha@host.neon.tech/banco?sslmode=require
 AUTH_SECRET=uma-chave-grande-e-secreta
+BLOB_READ_WRITE_TOKEN=token-criado-pela-vercel-blob
 ```
 
 Para gerar uma chave simples, voce pode usar um texto longo e dificil de adivinhar.
@@ -58,6 +59,6 @@ Troque essa senha antes de usar com participantes reais.
 
 ## Observacao sobre comprovantes
 
-Na primeira versao online, o envio de arquivo de comprovante fica bloqueado na Vercel. Use link GPS para registrar atividades.
+Para permitir envio de print/comprovante online, conecte um storage Vercel Blob ao projeto na Vercel. A Vercel cria a variavel `BLOB_READ_WRITE_TOKEN` automaticamente.
 
-Isso evita perder arquivos, porque a Vercel nao guarda uploads enviados para a pasta do projeto. Uma versao futura pode usar armazenamento online como Supabase Storage, UploadThing ou S3.
+Sem essa variavel, o upload local continua funcionando apenas na pasta do projeto durante desenvolvimento.
