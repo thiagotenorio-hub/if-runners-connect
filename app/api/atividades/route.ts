@@ -28,12 +28,12 @@ async function saveProofFile(file: File) {
 
   if (process.env.BLOB_READ_WRITE_TOKEN) {
     const blob = await put(`atividades/${fileName}`, file, {
-      access: "public",
+      access: "private",
       addRandomSuffix: true,
       contentType: file.type || undefined
     });
 
-    return blob.url;
+    return blob.pathname;
   }
 
   const bytes = Buffer.from(await file.arrayBuffer());

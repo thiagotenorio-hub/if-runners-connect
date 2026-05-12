@@ -188,7 +188,7 @@ export default async function AdminAtividadesPage() {
                         {activity.proofUploadPath ? (
                           <a
                             className="font-semibold text-forest"
-                            href={activity.proofUploadPath}
+                            href={`/api/admin/comprovantes?activityId=${activity.id}`}
                             rel="noreferrer"
                             target="_blank"
                           >
