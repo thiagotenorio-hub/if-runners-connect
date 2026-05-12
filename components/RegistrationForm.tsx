@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useRouter } from "next/navigation";
 import { FormField } from "@/components/FormField";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -8,6 +9,7 @@ type FormState = "idle" | "submitting" | "success" | "error";
 const initialMessage = "";
 
 export function RegistrationForm() {
+  const router = useRouter();
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState(initialMessage);
   const [bond, setBond] = useState("");
@@ -35,9 +37,21 @@ export function RegistrationForm() {
     const formData = new FormData(form);
     const selectedSex = String(formData.get("sex") || "");
     const sexOther = String(formData.get("sexOther") || "").trim();
+    const password = String(formData.get("password") || "");
+    const passwordConfirmation = String(
+      formData.get("passwordConfirmation") || ""
+    );
+
+    if (password !== passwordConfirmation) {
+      setState("error");
+      setMessage("As senhas informadas não conferem.");
+      return;
+    }
+
     const payload = {
       fullName: String(formData.get("fullName") || ""),
       email: String(formData.get("email") || ""),
+      password,
       phone: String(formData.get("phone") || ""),
       age: String(formData.get("age") || ""),
       sex: selectedSex === "OUTRO" ? sexOther : selectedSex,
@@ -71,6 +85,8 @@ export function RegistrationForm() {
     setSex("");
     setState("success");
     setMessage(data?.message || "Inscrição realizada com sucesso.");
+    router.push("/minha-area");
+    router.refresh();
   }
 
   return (
@@ -94,6 +110,20 @@ export function RegistrationForm() {
       <div className="grid gap-5 md:grid-cols-2">
         <FormField label="Nome completo" name="fullName" required />
         <FormField label="E-mail" name="email" type="email" required />
+        <FormField
+          label="Senha"
+          name="password"
+          type="password"
+          minLength="6"
+          required
+        />
+        <FormField
+          label="Confirmar senha"
+          name="passwordConfirmation"
+          type="password"
+          minLength="6"
+          required
+        />
         <FormField label="Telefone" name="phone" required />
         <FormField
           label="Idade"

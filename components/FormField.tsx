@@ -5,6 +5,7 @@ type FormFieldProps = {
   placeholder?: string;
   required?: boolean;
   min?: string;
+  minLength?: string;
   max?: string;
   step?: string;
   value?: string;
@@ -18,6 +19,7 @@ export function FormField({
   placeholder,
   required,
   min,
+  minLength,
   max,
   step,
   value,
@@ -35,6 +37,7 @@ export function FormField({
         placeholder={placeholder}
         required={required}
         min={min}
+        minLength={minLength ? Number(minLength) : undefined}
         max={max}
         step={step}
         value={value}

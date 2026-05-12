@@ -7,6 +7,7 @@ const navItems = [
   { href: "/atividades", label: "Atividades" },
   { href: "/pontuacao", label: "Pontuação" },
   { href: "/rankings", label: "Rankings" },
+  { href: "/minha-area", label: "Minha área" },
   { href: "/privacidade", label: "Privacidade" },
   { href: "/login", label: "Login" },
   { href: "/admin", label: "Admin" }

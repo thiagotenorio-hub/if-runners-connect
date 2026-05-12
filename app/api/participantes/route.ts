@@ -1,10 +1,15 @@
 import { NextResponse } from "next/server";
+import { hashPassword } from "@/lib/auth";
+import { ensureParticipantPasswordColumn } from "@/lib/participant-schema";
 import { prisma } from "@/lib/prisma";
+
+const PARTICIPANT_COOKIE = "if_runners_participant";
 
 const requiredFields = [
   "fullName",
   "email",
   "phone",
+  "password",
   "age",
   "sex",
   "bond",
@@ -57,12 +62,23 @@ export async function POST(request: Request) {
   }
 
   const email = normalizeText((body as { email: unknown }).email).toLowerCase();
+  const password = normalizeText((body as { password: unknown }).password);
+
+  if (password.length < 6) {
+    return NextResponse.json(
+      { message: "A senha deve ter pelo menos 6 caracteres." },
+      { status: 400 }
+    );
+  }
 
   try {
+    await ensureParticipantPasswordColumn();
+    const passwordHash = await hashPassword(password);
     const participant = await prisma.participant.create({
       data: {
         fullName: normalizeText((body as { fullName: unknown }).fullName),
         email,
+        passwordHash,
         phone: normalizeText((body as { phone: unknown }).phone),
         age,
         sex: normalizeText((body as { sex: unknown }).sex),
@@ -77,13 +93,23 @@ export async function POST(request: Request) {
       }
     });
 
-    return NextResponse.json(
+    const response = NextResponse.json(
       {
         message: "Inscrição realizada com sucesso.",
         participantId: participant.id
       },
       { status: 201 }
     );
+
+    response.cookies.set(PARTICIPANT_COOKIE, participant.id, {
+      httpOnly: true,
+      sameSite: "lax",
+      secure: process.env.NODE_ENV === "production",
+      path: "/",
+      maxAge: 60 * 60 * 24 * 30
+    });
+
+    return response;
   } catch (error) {
     if (isUniqueConstraintError(error)) {
       return NextResponse.json(
