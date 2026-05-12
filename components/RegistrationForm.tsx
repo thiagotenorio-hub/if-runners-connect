@@ -1,7 +1,6 @@
 "use client";
 
 import { FormEvent, useState } from "react";
-import { useRouter } from "next/navigation";
 import { FormField } from "@/components/FormField";
 
 type FormState = "idle" | "submitting" | "success" | "error";
@@ -9,7 +8,6 @@ type FormState = "idle" | "submitting" | "success" | "error";
 const initialMessage = "";
 
 export function RegistrationForm() {
-  const router = useRouter();
   const [state, setState] = useState<FormState>("idle");
   const [message, setMessage] = useState(initialMessage);
   const [bond, setBond] = useState("");
@@ -84,9 +82,41 @@ export function RegistrationForm() {
     setBond("");
     setSex("");
     setState("success");
-    setMessage(data?.message || "Inscrição realizada com sucesso.");
-    router.push("/minha-area");
-    router.refresh();
+    setMessage(
+      data?.message ||
+        "Inscrição realizada com sucesso. Você já pode fazer login."
+    );
+  }
+
+  if (state === "success") {
+    return (
+      <div
+        className="rounded border border-forest/20 bg-forest/10 p-6 shadow-sm"
+        role="status"
+      >
+        <p className="text-sm font-bold uppercase text-forest">
+          Inscrição confirmada
+        </p>
+        <h2 className="mt-2 text-2xl font-black text-graphite">
+          Tudo certo com sua inscrição.
+        </h2>
+        <p className="mt-3 max-w-2xl leading-7 text-graphite/75">{message}</p>
+        <div className="mt-5 flex flex-wrap gap-3">
+          <a
+            className="rounded bg-forest px-5 py-3 font-black text-white shadow-sm transition hover:bg-forest/90"
+            href="/entrar"
+          >
+            Fazer login
+          </a>
+          <a
+            className="rounded border border-forest/25 px-5 py-3 font-black text-forest transition hover:bg-forest/10"
+            href="/minha-area"
+          >
+            Ir para minha área
+          </a>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -96,11 +126,7 @@ export function RegistrationForm() {
     >
       {message ? (
         <div
-          className={
-            state === "success"
-              ? "rounded border border-forest/20 bg-forest/10 px-4 py-3 text-sm font-semibold text-forest"
-              : "rounded border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700"
-          }
+          className="rounded border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-700"
           role="status"
         >
           {message}

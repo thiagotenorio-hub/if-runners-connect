@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { hashPassword } from "@/lib/auth";
+import { sendRegistrationConfirmationEmail } from "@/lib/email";
 import { ensureParticipantPasswordColumn } from "@/lib/participant-schema";
 import { prisma } from "@/lib/prisma";
 
@@ -74,9 +75,10 @@ export async function POST(request: Request) {
   try {
     await ensureParticipantPasswordColumn();
     const passwordHash = await hashPassword(password);
+    const fullName = normalizeText((body as { fullName: unknown }).fullName);
     const participant = await prisma.participant.create({
       data: {
-        fullName: normalizeText((body as { fullName: unknown }).fullName),
+        fullName,
         email,
         passwordHash,
         phone: normalizeText((body as { phone: unknown }).phone),
@@ -93,9 +95,20 @@ export async function POST(request: Request) {
       }
     });
 
+    let emailSent = false;
+
+    try {
+      emailSent = await sendRegistrationConfirmationEmail({ email, fullName });
+    } catch (error) {
+      console.error("Nao foi possivel enviar e-mail de confirmacao.", error);
+    }
+
     const response = NextResponse.json(
       {
-        message: "Inscrição realizada com sucesso.",
+        message: emailSent
+          ? "Inscrição realizada com sucesso. Enviamos um e-mail de confirmação e você já pode fazer login."
+          : "Inscrição realizada com sucesso. Você já pode fazer login com o e-mail e a senha cadastrados.",
+        emailSent,
         participantId: participant.id
       },
       { status: 201 }
