@@ -127,7 +127,21 @@ export async function POST(request: Request) {
   let proofUploadPath: string | null = null;
 
   if (proof instanceof File && proof.size > 0) {
-    proofUploadPath = await saveProofFile(proof);
+    try {
+      proofUploadPath = await saveProofFile(proof);
+    } catch (error) {
+      const message =
+        error instanceof Error
+          ? error.message
+          : "Não foi possível salvar o print/comprovante.";
+
+      return NextResponse.json(
+        {
+          message: `Não foi possível salvar o print/comprovante. Detalhe: ${message}`
+        },
+        { status: 500 }
+      );
+    }
   }
 
   const activity = await prisma.activity.create({
